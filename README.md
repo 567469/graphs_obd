@@ -6,6 +6,7 @@ Bei der Implementierung der fogenden Scripte wurde ChatGPT4 [^1] verwendet um im
 
 Inhaltsverzeichnis:
 
+- [Skript_CSVDatein.R](https://github.com/567469/graphs_obd/blob/master/Skript_CSVDatein.R)  --> Script zum optischen Vergleich anhand von Graphen, von den gemittelten CAN- und Sensordaten
 - [camera_csv_to_median.py](https://github.com/567469/graphs_obd/blob/master/camera_csv_to_median.py)  --> Berechnet aus einer CSV-Datei den Median in einem angegebenen Intervall 
 - [camera_to_graph.py](https://github.com/567469/graphs_obd/blob/master/camera_to_graph.py)  --> Erste Variante der Textextraktion aus einem Video
 - [camera_to_graph_new.py](https://github.com/567469/graphs_obd/blob/master/camera_to_graph_new.py)  --> Zweite Variante der Textextraktion aus einem Video
