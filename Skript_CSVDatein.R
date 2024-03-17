@@ -76,11 +76,27 @@ data_combined <- data.frame(Time = erste_datei$Time,
 all_data <- rbind(data1, data3)
 
 # Darstellung als Linien-Graph
-gg <- ggplot(all_data, aes(x=Time, y=Value, color=Type, linetype=Source)) + 
-  geom_line() +
+gg <- ggplot(all_data, aes(x=Time, y=Value, group=Source)) + 
+  geom_line(aes(linetype = Source, color = Source, size = Source)) +
   labs(x="Zeit", y="kWh/100 km") +
   theme_minimal() +
-  scale_linetype_manual(values=c("dashed", "solid"))
+  theme(
+    legend.position = "top",
+    legend.title = element_text(size=14),       # Größe des Legendentitels
+    legend.text = element_text(size=12),        # Größe des Legendentextes
+    axis.title = element_text(size=14),         # Größe der Achsentitel
+    axis.text.x = element_text(size=10),        # Größe des Textes der x-Achse
+    axis.text.y = element_text(size=10)         # Größe des Textes der y-Achse
+  ) +
+  scale_color_manual(values=c("#E69F00", "#56B4E9"), 
+                     name="Quelle", 
+                     labels=c("CAN-Daten", "Aufnahme-Daten")) +
+  scale_linetype_manual(values=c("solid", "dashed"), 
+                        name="Quelle", 
+                        labels=c("CAN-Daten", "Aufnahme-Daten")) +
+  scale_size_manual(values=c(1.01, 0.75),                        
+                    name="Quelle", 
+                    labels=c("CAN-Daten", "Aufnahme-Daten"))
 # ------------------------------------------------------------------------------
 
 ggsave(filename = "C:/.../meinGGplotDiagramm.jpeg", plot = gg, width = 1920/96, height = 1080/96, dpi = 96)
